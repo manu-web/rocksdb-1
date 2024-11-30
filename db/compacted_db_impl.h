@@ -32,6 +32,13 @@ class CompactedDBImpl : public DBImpl {
                              PinnableSlice* value) override {
       return Status::NotSupported("Not supported in compacted db mode.");
   }
+
+  using DB::GetExternalRangeQuery;
+  virtual Status GetExternalRangeQuery(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family, const Slice& key,
+                             std::vector<PinnableSlice*>& values) override {
+      return Status::NotSupported("Not supported in compacted db mode.");
+  }
     
   using DB::MultiGet;
   virtual std::vector<Status> MultiGet(

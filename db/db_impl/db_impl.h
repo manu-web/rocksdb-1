@@ -196,6 +196,12 @@ class DBImpl : public DB {
 			     const Slice& key,
                              PinnableSlice* value) override;
 
+  using DB::GetExternalRangeQuery;
+  virtual Status GetExternalRangeQuery(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family,
+			     const Slice& key,
+                             std::vector<PinnableSlice*>& values) override;
+
   using DB::MultiGet;
   virtual std::vector<Status> MultiGet(
       const ReadOptions& options,

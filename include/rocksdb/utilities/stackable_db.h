@@ -108,6 +108,13 @@ class StackableDB : public DB {
     return db_->GetPExternal(options, column_family, key, value);
   }    
 
+  using DB::GetExternalRangeQuery;
+  virtual Status GetExternalRangeQuery(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family, const Slice& key,
+                             std::vector<PinnableSlice*>& values) override {
+      return Status::NotSupported("Not supported in compacted db mode.");
+  }
+
   using DB::MultiGet;
   virtual std::vector<Status> MultiGet(
       const ReadOptions& options,

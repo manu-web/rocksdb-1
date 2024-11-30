@@ -1629,7 +1629,13 @@ Status DBImpl::GetPExternal(const ReadOptions& options,
     return s;
 }
 
- 
+
+Status DBImpl::GetExternalRangeQuery(const ReadOptions& options,
+                   ColumnFamilyHandle* column_family, const Slice& key,
+                   std::vector<PinnableSlice*>& values) {
+  return Status::OK();
+}
+
 Status DBImpl::GetImpl(const ReadOptions& read_options,
                        ColumnFamilyHandle* column_family, const Slice& key,
                        PinnableSlice* pinnable_val, bool* value_found,

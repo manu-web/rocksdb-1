@@ -453,6 +453,16 @@ class DB {
     return GetPExternal(options, DefaultColumnFamily(), key, value);
   }
 
+  virtual Status GetExternalRangeQuery(const ReadOptions& options,
+                                    ColumnFamilyHandle* column_family,
+				    const Slice& key,
+                                    std::vector<PinnableSlice*>& values) = 0;
+
+  virtual Status GetExternalRangeQuery(const ReadOptions& options, const Slice& key,
+                             std::vector<PinnableSlice*>& values) {
+    return GetExternalRangeQuery(options, DefaultColumnFamily(), key, values);
+  }
+
   // If keys[i] does not exist in the database, then the i'th returned
   // status will be one for which Status::IsNotFound() is true, and
   // (*values)[i] will be set to some arbitrary value (often ""). Otherwise,
