@@ -1582,6 +1582,28 @@ Status DBImpl::GetExternal(const ReadOptions& options,
     return s;
 }
 
+Status DBImpl::GetExternalRangeQuery(const ReadOptions& options,
+                   ColumnFamilyHandle* column_family, const Slice& key,
+                   std::vector<PinnableSlice*>& values) {
+    values.clear();
+
+    std::unique_ptr<Iterator> it(NewIterator(options, column_family));
+
+    it->Seek(key);
+    if (!it->status().ok()) {
+        return it->status();
+    }
+
+    while (it->Valid()) {
+        auto* pinnable_value = new PinnableSlice(); 
+        pinnable_value->PinSelf(it->value());
+        values.push_back(pinnable_value);
+        it->Next();
+    }
+
+    return it->status();
+}
+
 static void cleanup_wotr_buf(void* arg1, void* /* arg2 */) {
   free(arg1);
 }
@@ -1627,13 +1649,6 @@ Status DBImpl::GetPExternal(const ReadOptions& options,
 
     s = GetPExternalImpl(pinnable_val, value);
     return s;
-}
-
-
-Status DBImpl::GetExternalRangeQuery(const ReadOptions& options,
-                   ColumnFamilyHandle* column_family, const Slice& key,
-                   std::vector<PinnableSlice*>& values) {
-  return Status::OK();
 }
 
 Status DBImpl::GetImpl(const ReadOptions& read_options,
