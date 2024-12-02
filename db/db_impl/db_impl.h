@@ -199,7 +199,7 @@ class DBImpl : public DB {
   using DB::GetExternalRangeQuery;
   virtual Status GetExternalRangeQuery(const ReadOptions& options,
                              ColumnFamilyHandle* column_family,
-			     const Slice& key,
+			     const Slice& s_key, const Slice& e_key,
                              std::vector<PinnableSlice*>& values) override;
 
   using DB::MultiGet;

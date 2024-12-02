@@ -454,13 +454,14 @@ class DB {
   }
 
   virtual Status GetExternalRangeQuery(const ReadOptions& options,
-                                    ColumnFamilyHandle* column_family,
-				    const Slice& key,
-                                    std::vector<PinnableSlice*>& values) = 0;
+                             ColumnFamilyHandle* column_family,
+			                       const Slice& s_key, const Slice& e_key,
+                             std::vector<PinnableSlice*>& values) = 0;
 
-  virtual Status GetExternalRangeQuery(const ReadOptions& options, const Slice& key,
+  virtual Status GetExternalRangeQuery(const ReadOptions& options,
+			                       const Slice& s_key, const Slice& e_key,
                              std::vector<PinnableSlice*>& values) {
-    return GetExternalRangeQuery(options, DefaultColumnFamily(), key, values);
+    return GetExternalRangeQuery(options, DefaultColumnFamily(), s_key, e_key, values);
   }
 
   // If keys[i] does not exist in the database, then the i'th returned

@@ -1583,21 +1583,29 @@ Status DBImpl::GetExternal(const ReadOptions& options,
 }
 
 Status DBImpl::GetExternalRangeQuery(const ReadOptions& options,
-                   ColumnFamilyHandle* column_family, const Slice& key,
+                   ColumnFamilyHandle* column_family, const Slice& s_key, const Slice& e_key,
                    std::vector<PinnableSlice*>& values) {
     values.clear();
 
     std::unique_ptr<Iterator> it(NewIterator(options, column_family));
 
-    it->Seek(key);
+    it->Seek(s_key);
     if (!it->status().ok()) {
         return it->status();
     }
 
     while (it->Valid()) {
-        auto* pinnable_value = new PinnableSlice(); 
-        pinnable_value->PinSelf(it->value());
+        PinnableSlice pinnable_loc_value;
+        pinnable_loc_value.PinSelf(it->value());
+        PinnableSlice* pinnable_value = new PinnableSlice();
+
+        auto s = GetPExternalImpl(pinnable_loc_value, pinnable_value);
+      
         values.push_back(pinnable_value);
+        //If key matches end key, break
+        if (it->key().compare(e_key) >= 0) {
+            break;  // Exit loop if we've reached or passed the end key
+        }
         it->Next();
     }
 

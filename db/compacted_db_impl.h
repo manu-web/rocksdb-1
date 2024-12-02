@@ -35,7 +35,8 @@ class CompactedDBImpl : public DBImpl {
 
   using DB::GetExternalRangeQuery;
   virtual Status GetExternalRangeQuery(const ReadOptions& options,
-                             ColumnFamilyHandle* column_family, const Slice& key,
+                             ColumnFamilyHandle* column_family,
+			     const Slice& s_key, const Slice& e_key,
                              std::vector<PinnableSlice*>& values) override {
       return Status::NotSupported("Not supported in compacted db mode.");
   }

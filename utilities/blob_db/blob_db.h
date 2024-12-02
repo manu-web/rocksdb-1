@@ -163,14 +163,15 @@ class BlobDB : public StackableDB {
                              PinnableSlice* value) override {
       return Status::NotSupported("Not supported operation in blob db.");
   }
-
-  using DB::GetExternalRangeQuery;
+  
+  using rocksdb::StackableDB::GetExternalRangeQuery;
   virtual Status GetExternalRangeQuery(const ReadOptions& options,
-                             ColumnFamilyHandle* column_family, const Slice& key,
+                             ColumnFamilyHandle* column_family,
+			     const Slice& s_key, const Slice& e_key,
                              std::vector<PinnableSlice*>& values) override {
       return Status::NotSupported("Not supported in compacted db mode.");
-  }                              
-
+  }
+    
   using rocksdb::StackableDB::MultiGet;
   virtual std::vector<Status> MultiGet(
       const ReadOptions& options,
