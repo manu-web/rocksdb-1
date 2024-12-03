@@ -1599,8 +1599,8 @@ Status DBImpl::GetExternalRangeQuery(const ReadOptions& options,
         pinnable_loc_value.PinSelf(it->value());
         PinnableSlice* pinnable_value = new PinnableSlice();
 
-        auto s = GetPExternalImpl(pinnable_loc_value, pinnable_value);
-      
+        auto s = GetExternalImpl(pinnable_loc_value, pinnable_value);
+        printf("pinnable_value %s", pinnable_value->ToString().c_str());
         values.push_back(pinnable_value);
         //If key matches end key, break
         if (it->key().compare(e_key) >= 0) {

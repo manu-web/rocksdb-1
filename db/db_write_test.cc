@@ -71,8 +71,11 @@ TEST_P(DBWriteTest, SingleWriteWOTR) {
   ASSERT_EQ(offsets.size(), 1);
 
   PinnableSlice value;
-  ASSERT_OK(dbfull()->GetExternal(ReadOptions(), k, &value));
-  ASSERT_EQ(value.ToString(), v);
+  //ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, value));
+  //ASSERT_EQ(value.ToString(), v);
+  std::vector<PinnableSlice*> values;
+  ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, k, values));
+  ASSERT_EQ(values[0]->ToString(), v);
 
   WriteBatch batch2;
   std::string locator;
