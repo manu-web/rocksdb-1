@@ -65,17 +65,22 @@ TEST_P(DBWriteTest, SingleWriteWOTR) {
 
   std::string k = "key1";
   std::string v = "value1";
-  
+  std::string k2 = "key2";
+  std::string v2 = "value2";
+
   batch.Put(k, v);
+  batch.Put(k2, v2);
+
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
-  ASSERT_EQ(offsets.size(), 1);
+  ASSERT_EQ(offsets.size(), 2);
 
   PinnableSlice value;
   //ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, value));
   //ASSERT_EQ(value.ToString(), v);
-  std::vector<PinnableSlice*> values;
-  ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, k, values));
+  std::vector<PinnableSlice*> values(2);
+  ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, k2, values));
   ASSERT_EQ(values[0]->ToString(), v);
+  ASSERT_EQ(values[1]->ToString(), v2);
 
   WriteBatch batch2;
   std::string locator;
