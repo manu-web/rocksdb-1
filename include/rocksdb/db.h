@@ -464,6 +464,17 @@ class DB {
     return GetExternalRangeQuery(options, DefaultColumnFamily(), s_key, e_key, values);
   }
 
+  virtual Status MultiGetExternalRangeQuery(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family,
+			                       const Slice& s_key, const Slice& e_key,
+                             std::vector<PinnableSlice*>& values) = 0;
+
+  virtual Status MultiGetExternalRangeQuery(const ReadOptions& options,
+			                       const Slice& s_key, const Slice& e_key,
+                             std::vector<PinnableSlice*>& values) {
+    return MultiGetExternalRangeQuery(options, DefaultColumnFamily(), s_key, e_key, values);
+  }
+
   // If keys[i] does not exist in the database, then the i'th returned
   // status will be one for which Status::IsNotFound() is true, and
   // (*values)[i] will be set to some arbitrary value (often ""). Otherwise,

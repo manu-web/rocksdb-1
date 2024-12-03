@@ -2489,6 +2489,24 @@ class ModelDB : public DB {
                      PinnableSlice* value) override {
       return Status::NotSupported("Not supported in ModelDB.");
   }
+
+  using DB::GetExternalRangeQuery;
+  Status GetExternalRangeQuery(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family,
+			     const Slice& s_key, const Slice& e_key,
+                             std::vector<PinnableSlice*>& values) {
+      return Status::NotSupported("Not supported in ModelDB.");
+  }
+
+  using DB::MultiGetExternalRangeQuery;
+  Status MultiGetExternalRangeQuery(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family,
+			     const Slice& s_key, const Slice& e_key,
+                             std::vector<PinnableSlice*>& values) {
+      return Status::NotSupported("Not supported in ModelDB.");
+  }
+
+
   using DB::GetPExternal;
   Status GetPExternal(const ReadOptions& options,
                      ColumnFamilyHandle* column_family, const Slice& key,

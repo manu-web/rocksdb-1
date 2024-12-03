@@ -78,7 +78,7 @@ TEST_P(DBWriteTest, SingleWriteWOTR) {
   //ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, value));
   //ASSERT_EQ(value.ToString(), v);
   std::vector<PinnableSlice*> values(2);
-  ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, k2, values));
+  ASSERT_OK(dbfull()->MultiGetExternalRangeQuery(ReadOptions(), k, k2, values));
   ASSERT_EQ(values[0]->ToString(), v);
   ASSERT_EQ(values[1]->ToString(), v2);
 

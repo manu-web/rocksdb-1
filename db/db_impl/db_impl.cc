@@ -1612,6 +1612,83 @@ Status DBImpl::GetExternalRangeQuery(const ReadOptions& options,
     return it->status();
 }
 
+Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
+                                     ColumnFamilyHandle* column_family, 
+                                     const Slice& s_key, const Slice& e_key,
+                                     std::vector<PinnableSlice*>& values) {
+
+    values.clear();
+
+    // Number of threads for parallel processing
+    const int num_threads = 2;  // You can adjust based on the system's CPU
+    std::mutex values_mutex;     // Mutex to protect values vector
+    std::vector<std::thread> threads;
+    std::vector<Status> statuses(num_threads);
+
+    //TODO: Get range size from reading key string
+    auto range_size = 2;//static_cast<size_t>(e_key.compare(s_key));  // Calculate the range size
+
+    // Lambda function for processing chunks in parallel
+    auto process_range_chunk = [&, num_threads](int thread_id) {
+        // Determine the range of keys for this thread to process
+        size_t chunk_size = range_size / num_threads;
+        size_t start = thread_id * chunk_size;
+        size_t end = (thread_id == num_threads - 1) ? range_size : start + chunk_size;
+        printf("Thread %d processing range: [start = %zu, end = %zu]\n", thread_id, start, end);
+        std::unique_ptr<Iterator> it(NewIterator(options, column_family));
+        it->Seek(s_key);
+
+        if (!it->status().ok()) {
+            statuses[thread_id] = it->status();
+            return;
+        }
+
+        size_t current = 0;
+        while (it->Valid() && current < end) {
+            if (current >= start) {
+                PinnableSlice pinnable_loc_value;
+                pinnable_loc_value.PinSelf(it->value());
+                PinnableSlice* pinnable_value = new PinnableSlice();
+
+                auto s = GetExternalImpl(pinnable_loc_value, pinnable_value);
+                printf("pinnable_value %s", pinnable_value->ToString().c_str());
+
+                {
+                    // Synchronize access to values vector
+                    std::lock_guard<std::mutex> lock(values_mutex);
+                    //NS: Since they are concurrent now, we cannot do a simple push_back
+                    //TODO: Figure out a way to keep preserve the ordering
+                    values[thread_id] = pinnable_value;
+                }
+            }
+            current++;
+            it->Next();
+        }
+
+        statuses[thread_id] = it->status();
+    };
+
+
+     // Launch threads
+    for (int i = 0; i < num_threads; ++i) {
+        threads.push_back(std::thread(process_range_chunk, i));
+    }
+
+    // Wait for all threads to finish
+    for (auto& t : threads) {
+        t.join();
+    }
+
+    // Check for any error statuses from threads
+    for (const auto& status : statuses) {
+        if (!status.ok()) {
+            return status;
+        }
+    }
+
+    return Status::OK();
+}
+
 static void cleanup_wotr_buf(void* arg1, void* /* arg2 */) {
   free(arg1);
 }
