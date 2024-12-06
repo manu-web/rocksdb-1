@@ -1626,7 +1626,7 @@ Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
     std::vector<Status> statuses(num_threads);
 
     //TODO: Get range size from reading key string
-    auto range_size = 2;//static_cast<size_t>(e_key.compare(s_key));  // Calculate the range size
+    auto range_size = 3;//static_cast<size_t>(e_key.compare(s_key));  // Calculate the range size
 
     // Lambda function for processing chunks in parallel
     auto process_range_chunk = [&, num_threads](int thread_id) {
@@ -1658,7 +1658,7 @@ Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
                     std::lock_guard<std::mutex> lock(values_mutex);
                     //NS: Since they are concurrent now, we cannot do a simple push_back
                     //TODO: Figure out a way to keep preserve the ordering
-                    values[thread_id] = pinnable_value;
+                    values[(chunk_size * thread_id) + (current - start)] = pinnable_value;
                 }
             }
             current++;
