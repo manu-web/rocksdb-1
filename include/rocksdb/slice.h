@@ -148,8 +148,8 @@ class PinnableSlice : public Slice, public Cleanable {
   explicit PinnableSlice(std::string* buf) { buf_ = buf; }
 
   // No copy constructor and copy assignment allowed.
-  PinnableSlice(PinnableSlice&) = delete;
-  PinnableSlice& operator=(PinnableSlice&) = delete;
+  // PinnableSlice(PinnableSlice&) = delete;
+  // PinnableSlice& operator=(PinnableSlice&) = delete;
 
   inline void PinSlice(const Slice& s, CleanupFunction f, void* arg1,
                        void* arg2) {
