@@ -112,6 +112,353 @@ TEST_P(DBWriteTest, RangeScan_64B) {
   w->CloseAndDestroy();
 }
 
+
+TEST_P(DBWriteTest, RangeScan_256B) {
+  std::string logfile = "/tmp/wotrlog.txt";
+  auto w = std::make_shared<Wotr>(logfile.c_str());
+  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
+
+  // Set total operations to 1000 (can be adjusted as needed)
+  int total_operations = 1000;
+  int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
+
+  // Prepare the batch for inserting 5% of the total keys
+  std::vector<size_t> offsets;
+  WriteBatch batch;
+
+  std::string base_key = "key";
+  std::string base_value(256, 'a');
+
+  // Insert 5% of the total operations as Put (inserting 5% of total keys)
+  for (int i = 1; i <= put_operations; ++i) {
+    std::string key = base_key + std::to_string(i);
+    batch.Put(key, base_value);
+  }
+
+  // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
+  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
+  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
+
+  // Perform range scan operations (95% of total operations)
+  // Each range scan operation will scan exactly 5 keys
+  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
+
+    std::string start_key = "key1";  // Circular starting key
+    ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
+
+    // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
+    /*for (int j = 0; j < 5; ++j) {
+      ASSERT_EQ(values[j].second->ToString(), base_value);
+    }*/
+  
+
+  // Measure the end time for the operations
+  auto end_time = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end_time - start_time;
+  double time_taken_seconds = duration.count();  // Time in seconds
+
+  // Calculate throughput: number of operations / time taken (in operations per second)
+  double throughput = total_operations / time_taken_seconds;
+
+  // Log the throughput
+  std::cout << "Basic 256B: Throughput: " << throughput << " operations per second." << std::endl;
+
+  // Clean up
+  w->CloseAndDestroy();
+}
+
+
+
+TEST_P(DBWriteTest, RangeScan_1KB) {
+  std::string logfile = "/tmp/wotrlog.txt";
+  auto w = std::make_shared<Wotr>(logfile.c_str());
+  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
+
+  // Set total operations to 1000 (can be adjusted as needed)
+  int total_operations = 1000;
+  int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
+
+  // Prepare the batch for inserting 5% of the total keys
+  std::vector<size_t> offsets;
+  WriteBatch batch;
+
+  std::string base_key = "key";
+  std::string base_value(1024, 'a');
+
+  // Insert 5% of the total operations as Put (inserting 5% of total keys)
+  for (int i = 1; i <= put_operations; ++i) {
+    std::string key = base_key + std::to_string(i);
+    batch.Put(key, base_value);
+  }
+
+  // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
+  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
+  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
+
+  // Perform range scan operations (95% of total operations)
+  // Each range scan operation will scan exactly 5 keys
+  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
+
+    std::string start_key = "key1";  // Circular starting key
+    ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
+
+    // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
+    /*for (int j = 0; j < 5; ++j) {
+      ASSERT_EQ(values[j].second->ToString(), base_value);
+    }*/
+  
+
+  // Measure the end time for the operations
+  auto end_time = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end_time - start_time;
+  double time_taken_seconds = duration.count();  // Time in seconds
+
+  // Calculate throughput: number of operations / time taken (in operations per second)
+  double throughput = total_operations / time_taken_seconds;
+
+  // Log the throughput
+  std::cout << "Basic 1KB: Throughput: " << throughput << " operations per second." << std::endl;
+
+  // Clean up
+  w->CloseAndDestroy();
+}
+
+
+TEST_P(DBWriteTest, RangeScan_4KB) {
+  std::string logfile = "/tmp/wotrlog.txt";
+  auto w = std::make_shared<Wotr>(logfile.c_str());
+  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
+
+  // Set total operations to 1000 (can be adjusted as needed)
+  int total_operations = 1000;
+  int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
+
+  // Prepare the batch for inserting 5% of the total keys
+  std::vector<size_t> offsets;
+  WriteBatch batch;
+
+  std::string base_key = "key";
+  std::string base_value(4096, 'a');
+
+  // Insert 5% of the total operations as Put (inserting 5% of total keys)
+  for (int i = 1; i <= put_operations; ++i) {
+    std::string key = base_key + std::to_string(i);
+    batch.Put(key, base_value);
+  }
+
+  // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
+  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
+  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
+
+  // Perform range scan operations (95% of total operations)
+  // Each range scan operation will scan exactly 5 keys
+  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
+
+    std::string start_key = "key1";  // Circular starting key
+    ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
+
+    // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
+    /*for (int j = 0; j < 5; ++j) {
+      ASSERT_EQ(values[j].second->ToString(), base_value);
+    }*/
+  
+
+  // Measure the end time for the operations
+  auto end_time = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end_time - start_time;
+  double time_taken_seconds = duration.count();  // Time in seconds
+
+  // Calculate throughput: number of operations / time taken (in operations per second)
+  double throughput = total_operations / time_taken_seconds;
+
+  // Log the throughput
+  std::cout << "Basic 4KB: Throughput: " << throughput << " operations per second." << std::endl;
+
+  // Clean up
+  w->CloseAndDestroy();
+}
+
+
+TEST_P(DBWriteTest, RangeScan_16KB) {
+  std::string logfile = "/tmp/wotrlog.txt";
+  auto w = std::make_shared<Wotr>(logfile.c_str());
+  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
+
+  // Set total operations to 1000 (can be adjusted as needed)
+  int total_operations = 1000;
+  int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
+
+  // Prepare the batch for inserting 5% of the total keys
+  std::vector<size_t> offsets;
+  WriteBatch batch;
+
+  std::string base_key = "key";
+  std::string base_value(16384, 'a');
+
+  // Insert 5% of the total operations as Put (inserting 5% of total keys)
+  for (int i = 1; i <= put_operations; ++i) {
+    std::string key = base_key + std::to_string(i);
+    batch.Put(key, base_value);
+  }
+
+  // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
+  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
+  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
+
+  // Perform range scan operations (95% of total operations)
+  // Each range scan operation will scan exactly 5 keys
+  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
+
+    std::string start_key = "key1";  // Circular starting key
+    ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
+
+    // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
+    /*for (int j = 0; j < 5; ++j) {
+      ASSERT_EQ(values[j].second->ToString(), base_value);
+    }*/
+  
+
+  // Measure the end time for the operations
+  auto end_time = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end_time - start_time;
+  double time_taken_seconds = duration.count();  // Time in seconds
+
+  // Calculate throughput: number of operations / time taken (in operations per second)
+  double throughput = total_operations / time_taken_seconds;
+
+  // Log the throughput
+  std::cout << "Basic 16KB: Throughput: " << throughput << " operations per second." << std::endl;
+
+  // Clean up
+  w->CloseAndDestroy();
+}
+
+TEST_P(DBWriteTest, RangeScan_64KB) {
+  std::string logfile = "/tmp/wotrlog.txt";
+  auto w = std::make_shared<Wotr>(logfile.c_str());
+  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
+
+  // Set total operations to 1000 (can be adjusted as needed)
+  int total_operations = 1000;
+  int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
+
+  // Prepare the batch for inserting 5% of the total keys
+  std::vector<size_t> offsets;
+  WriteBatch batch;
+
+  std::string base_key = "key";
+  std::string base_value(65536, 'a');
+
+  // Insert 5% of the total operations as Put (inserting 5% of total keys)
+  for (int i = 1; i <= put_operations; ++i) {
+    std::string key = base_key + std::to_string(i);
+    batch.Put(key, base_value);
+  }
+
+  // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
+  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
+  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
+
+  // Perform range scan operations (95% of total operations)
+  // Each range scan operation will scan exactly 5 keys
+  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
+
+    std::string start_key = "key1";  // Circular starting key
+    ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
+
+    // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
+    /*for (int j = 0; j < 5; ++j) {
+      ASSERT_EQ(values[j].second->ToString(), base_value);
+    }*/
+  
+
+  // Measure the end time for the operations
+  auto end_time = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end_time - start_time;
+  double time_taken_seconds = duration.count();  // Time in seconds
+
+  // Calculate throughput: number of operations / time taken (in operations per second)
+  double throughput = total_operations / time_taken_seconds;
+
+  // Log the throughput
+  std::cout << "Basic 64KB: Throughput: " << throughput << " operations per second." << std::endl;
+
+  // Clean up
+  w->CloseAndDestroy();
+}
+
+TEST_P(DBWriteTest, RangeScan_256KB) {
+  std::string logfile = "/tmp/wotrlog.txt";
+  auto w = std::make_shared<Wotr>(logfile.c_str());
+  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
+
+  // Set total operations to 1000 (can be adjusted as needed)
+  int total_operations = 1000;
+  int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
+
+  // Prepare the batch for inserting 5% of the total keys
+  std::vector<size_t> offsets;
+  WriteBatch batch;
+
+  std::string base_key = "key";
+  std::string base_value(262144, 'a');
+
+  // Insert 5% of the total operations as Put (inserting 5% of total keys)
+  for (int i = 1; i <= put_operations; ++i) {
+    std::string key = base_key + std::to_string(i);
+    batch.Put(key, base_value);
+  }
+
+  // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
+  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
+  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
+
+  // Perform range scan operations (95% of total operations)
+  // Each range scan operation will scan exactly 5 keys
+  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
+
+    std::string start_key = "key1";  // Circular starting key
+    ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
+
+    // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
+    /*for (int j = 0; j < 5; ++j) {
+      ASSERT_EQ(values[j].second->ToString(), base_value);
+    }*/
+  
+
+  // Measure the end time for the operations
+  auto end_time = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end_time - start_time;
+  double time_taken_seconds = duration.count();  // Time in seconds
+
+  // Calculate throughput: number of operations / time taken (in operations per second)
+  double throughput = total_operations / time_taken_seconds;
+
+  // Log the throughput
+  std::cout << "Basic 256KB: Throughput: " << throughput << " operations per second." << std::endl;
+
+  // Clean up
+  w->CloseAndDestroy();
+}
+
 TEST_P(DBWriteTest, MultiThreadRangeScan_64B) {
   std::string logfile = "/tmp/wotrlog.txt";
   auto w = std::make_shared<Wotr>(logfile.c_str());
@@ -165,64 +512,6 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_64B) {
 
   // Log the throughput
   std::cout << "MultiThreaded 64B: Throughput: " << throughput << " operations per second." << std::endl;
-
-  // Clean up
-  w->CloseAndDestroy();
-}
-
-
-TEST_P(DBWriteTest, RangeScan_256KB) {
-  std::string logfile = "/tmp/wotrlog.txt";
-  auto w = std::make_shared<Wotr>(logfile.c_str());
-  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
-
-  // Set total operations to 1000 (can be adjusted as needed)
-  int total_operations = 1000;
-  int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
-  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
-
-  // Prepare the batch for inserting 5% of the total keys
-  std::vector<size_t> offsets;
-  WriteBatch batch;
-
-  std::string base_key = "key";
-  std::string base_value(262144, 'a');  // 64-byte value (64 'a' characters)
-
-  // Insert 5% of the total operations as Put (inserting 5% of total keys)
-  for (int i = 1; i <= put_operations; ++i) {
-    std::string key = base_key + std::to_string(i);
-    batch.Put(key, base_value);
-  }
-
-  // Measure the start time for the write operations
-  auto start_time = std::chrono::high_resolution_clock::now();
-
-  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
-  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
-
-  // Perform range scan operations (95% of total operations)
-  // Each range scan operation will scan exactly 5 keys
-  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
-
-    std::string start_key = "key1";  // Circular starting key
-    ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
-
-    // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
-    /*for (int j = 0; j < 5; ++j) {
-      ASSERT_EQ(values[j].second->ToString(), base_value);
-    }*/
-  
-
-  // Measure the end time for the operations
-  auto end_time = std::chrono::high_resolution_clock::now();
-  std::chrono::duration<double> duration = end_time - start_time;
-  double time_taken_seconds = duration.count();  // Time in seconds
-
-  // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
-
-  // Log the throughput
-  std::cout << "Basic 256KB: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
@@ -285,6 +574,68 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_256KB) {
   // Clean up
   w->CloseAndDestroy();
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////  Random Put Test   ////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+TEST_P(DBWriteTest, RangeRandomScan_64B) {
+  std::string logfile = "/tmp/wotrlog.txt";
+  auto w = std::make_shared<Wotr>(logfile.c_str());
+  ASSERT_OK(dbfull()->SetExternal(w.get(), false));
+
+  // Set total operations to 1000 (can be adjusted as needed)
+  int total_operations = 1000;
+  int put_operations = 10000; // total_operations * 0.05;  // 5% put operations
+  int scan_operations = 1024; // total_operations - put_operations;  // 95% scan operations
+
+  // Prepare the batch for inserting 5% of the total keys
+  std::vector<size_t> offsets;
+  WriteBatch batch;
+
+  std::mt19937 gen(12345); // Fixed seed for reproducibility
+  std::uniform_int_distribution<> key_len_distrib(1, 128);
+  std::uniform_int_distribution<> value_len_distrib(1, 64); // 64-byte values
+
+  // Insert 5% of the total operations as Put (inserting 5% of total keys)
+  for (int i = 1; i <= put_operations; ++i) {
+    std::string key = generate_random_string(key_len_distrib(gen), gen);
+    std::string new_value = generate_random_string(value_len_distrib(gen), gen);
+    batch.Put(key, new_value);
+  }
+
+  // Measure the start time for the write operations
+  auto start_time = high_resolution_clock::now();
+
+  ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
+  ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
+
+  // Perform range scan operations (95% of total operations)
+  // Each range scan operation will scan exactly 5 keys
+  std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
+
+  std::string start_key = "key1";  // Circular starting key
+  ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
+
+  // Measure the end time for the operations
+  auto end_time = high_resolution_clock::now();
+  duration<double> duration = end_time - start_time;
+  double time_taken_seconds = duration.count();  // Time in seconds
+
+  // Calculate throughput: number of operations / time taken (in operations per second)
+  double throughput = total_operations / time_taken_seconds;
+
+  // Log the throughput
+  std::cout << "Basic Random Put 64B: Throughput: " << throughput << " operations per second." << std::endl;
+
+  // Clean up
+  w->CloseAndDestroy();
+}
+
 
 
 /*
