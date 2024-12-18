@@ -2498,6 +2498,15 @@ class ModelDB : public DB {
       return Status::NotSupported("Not supported in ModelDB.");
   }
 
+  using DB::GetExternalRangeQueryPair;
+  Status GetExternalRangeQueryPair(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family,
+			     const Slice& s_key, const size_t limit,
+                             std::vector<std::pair<Slice , PinnableSlice*>>& values) {
+      return Status::NotSupported("Not supported in ModelDB.");
+  }
+
+
   using DB::MultiGetExternalRangeQuery;
   Status MultiGetExternalRangeQuery(const ReadOptions& options,
                              ColumnFamilyHandle* column_family,

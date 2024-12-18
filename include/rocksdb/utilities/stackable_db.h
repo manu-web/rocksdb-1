@@ -116,6 +116,15 @@ class StackableDB : public DB {
       return Status::NotSupported("Not supported in compacted db mode.");
   }
 
+  using DB::GetExternalRangeQueryPair;
+  virtual Status GetExternalRangeQueryPair(const ReadOptions& options,
+                             ColumnFamilyHandle* column_family,
+			     const Slice& s_key, const size_t limit,
+                             std::vector<std::pair<Slice , PinnableSlice*>>& values) override {
+      return Status::NotSupported("Not supported in compacted db mode.");
+  }
+
+
   using DB::MultiGetExternalRangeQuery;
   virtual Status MultiGetExternalRangeQuery(const ReadOptions& options,
                              ColumnFamilyHandle* column_family,

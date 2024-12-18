@@ -80,11 +80,11 @@ TEST_P(DBWriteTest, SingleWriteWOTR) {
   PinnableSlice value;
   //ASSERT_OK(dbfull()->GetExternalRangeQuery(ReadOptions(), k, value));
   //ASSERT_EQ(value.ToString(), v);
-  std::vector<PinnableSlice*> values(3);
-  ASSERT_OK(dbfull()->MultiGetExternalRangeQuery(ReadOptions(), k, k3, values));
-  ASSERT_EQ(values[0]->ToString(), v);
-  ASSERT_EQ(values[1]->ToString(), v2);
-  ASSERT_EQ(values[2]->ToString(), v3);
+  std::vector<std::pair<Slice, PinnableSlice*>> values(3);
+  ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), k, 3, values));
+  ASSERT_EQ(values[0].second->ToString(), v);
+  ASSERT_EQ(values[1].second->ToString(), v2);
+  ASSERT_EQ(values[2].second->ToString(), v3);
 
   WriteBatch batch2;
   std::string locator;

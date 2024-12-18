@@ -464,6 +464,16 @@ class DB {
     return GetExternalRangeQuery(options, DefaultColumnFamily(), s_key, e_key, values);
   }
 
+  virtual Status GetExternalRangeQueryPair(const ReadOptions& options,
+                   ColumnFamilyHandle* column_family, const Slice& s_key, const size_t limit,
+                   std::vector<std::pair<Slice , PinnableSlice*>>& values) = 0;
+
+  virtual Status GetExternalRangeQueryPair(const ReadOptions& options,
+                   const Slice& s_key, const size_t limit,
+                   std::vector<std::pair<Slice , PinnableSlice*>>& values) {
+      return GetExternalRangeQueryPair(options, DefaultColumnFamily(), s_key, limit, values);
+  }
+
   virtual Status MultiGetExternalRangeQuery(const ReadOptions& options,
                              ColumnFamilyHandle* column_family,
 			                       const Slice& s_key, const Slice& e_key,

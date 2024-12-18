@@ -1612,6 +1612,38 @@ Status DBImpl::GetExternalRangeQuery(const ReadOptions& options,
     return it->status();
 }
 
+Status DBImpl::GetExternalRangeQueryPair(const ReadOptions& options,
+                   ColumnFamilyHandle* column_family, const Slice& s_key, const size_t limit,
+                   std::vector<std::pair<Slice, PinnableSlice*>>& values) {
+    values.clear();
+    size_t count = 0;
+
+    std::unique_ptr<Iterator> it(NewIterator(options, column_family));
+
+    it->Seek(s_key);
+    if (!it->status().ok()) {
+        return it->status();
+    }
+
+    while (it->Valid()) {
+        PinnableSlice pinnable_loc_value;
+        pinnable_loc_value.PinSelf(it->value());
+        PinnableSlice* pinnable_value = new PinnableSlice();
+
+        auto s = GetExternalImpl(pinnable_loc_value, pinnable_value);
+        printf("pinnable_value %s", pinnable_value->ToString().c_str());
+        values.push_back(std::make_pair(it->key(),pinnable_value));
+        count++;
+        //If the number of values fetched are more than asked by the requester
+        if (count >= limit) {
+            break;  // Exit loop if we've reached or passed the end key
+        }
+        it->Next();
+    }
+
+    return it->status();
+}
+
 Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
                                      ColumnFamilyHandle* column_family, 
                                      const Slice& s_key, const Slice& e_key,
