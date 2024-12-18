@@ -63,7 +63,7 @@ TEST_P(DBWriteTest, RangeScan_64B) {
   // Set total operations to 1000 (can be adjusted as needed)
   int total_operations = 1000;
   int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
-  int scan_operations = 1000;//total_operations - put_operations;  // 95% scan operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
 
   // Prepare the batch for inserting 5% of the total keys
   std::vector<size_t> offsets;
@@ -120,12 +120,12 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_64B) {
   // Set total operations to 1000 (can be adjusted as needed)
   int total_operations = 1000;
   int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
-  int scan_operations = 1000;//total_operations - put_operations;  // 95% scan operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
 
   // Prepare the batch for inserting 5% of the total keys
   std::vector<size_t> offsets;
   WriteBatch batch;
-
+  int num_threads = 16;
   std::string base_key = "key";
   std::string base_value(64, 'a');  // 64-byte value (64 'a' characters)
 
@@ -147,7 +147,7 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_64B) {
 
     // Start from the first key and perform a range scan for 5 keys
     std::string start_key = "key1";  // Circular starting key
-    ASSERT_OK(dbfull()->MultiGetExternalRangeQuery(ReadOptions(), start_key, scan_operations, values));
+    ASSERT_OK(dbfull()->MultiGetExternalRangeQuery(ReadOptions(), num_threads, start_key, scan_operations, values));
 
     // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
     /*for (int j = 0; j < 50; ++j) {
@@ -179,7 +179,7 @@ TEST_P(DBWriteTest, RangeScan_256KB) {
   // Set total operations to 1000 (can be adjusted as needed)
   int total_operations = 1000;
   int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
-  int scan_operations = 1000;//total_operations - put_operations;  // 95% scan operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
 
   // Prepare the batch for inserting 5% of the total keys
   std::vector<size_t> offsets;
@@ -236,12 +236,12 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_256KB) {
   // Set total operations to 1000 (can be adjusted as needed)
   int total_operations = 1000;
   int put_operations = 10000;//total_operations * 0.05;  // 5% put operations
-  int scan_operations = 1000;//total_operations - put_operations;  // 95% scan operations
+  int scan_operations = 1024;//total_operations - put_operations;  // 95% scan operations
 
   // Prepare the batch for inserting 5% of the total keys
   std::vector<size_t> offsets;
   WriteBatch batch;
-
+  int num_threads = 16;
   std::string base_key = "key";
   std::string base_value(262144, 'a');  // 64-byte value (64 'a' characters)
 
@@ -263,7 +263,7 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_256KB) {
 
     // Start from the first key and perform a range scan for 5 keys
     std::string start_key = "key1";  // Circular starting key
-    ASSERT_OK(dbfull()->MultiGetExternalRangeQuery(ReadOptions(), threads, start_key, scan_operations, values));
+    ASSERT_OK(dbfull()->MultiGetExternalRangeQuery(ReadOptions(), num_threads, start_key, scan_operations, values));
 
     // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
     /*for (int j = 0; j < 50; ++j) {
