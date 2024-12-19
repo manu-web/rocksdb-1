@@ -145,7 +145,6 @@ TEST_P(DBWriteTest, RangeScan_256B) {
     batch.Put(key, base_value);
   }
 
-
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
 
@@ -207,7 +206,6 @@ TEST_P(DBWriteTest, RangeScan_1KB) {
     batch.Put(key, base_value);
   }
 
-
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
 
@@ -267,7 +265,6 @@ TEST_P(DBWriteTest, RangeScan_4KB) {
     std::string key = oss.str();
     batch.Put(key, base_value);
   }
-
 
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
@@ -329,7 +326,6 @@ TEST_P(DBWriteTest, RangeScan_16KB) {
     batch.Put(key, base_value);
   }
 
-
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
 
@@ -388,7 +384,6 @@ TEST_P(DBWriteTest, RangeScan_64KB) {
     std::string key = oss.str();
     batch.Put(key, base_value);
   }
-
 
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
@@ -693,7 +688,6 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_256B) {
     std::string key = oss.str();
     batch.Put(key, base_value);
   }
-
 
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
