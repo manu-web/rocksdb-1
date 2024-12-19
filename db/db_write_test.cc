@@ -110,7 +110,7 @@ TEST_P(DBWriteTest, RangeScan_64B) {
   double time_taken_seconds = duration.count();  // Time in seconds
 
   // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
+  double throughput = 64 * total_operations / time_taken_seconds;
 
   // Log the throughput
   std::cout << "Basic 64B: Throughput: " << throughput << " operations per second." << std::endl;
@@ -170,7 +170,7 @@ TEST_P(DBWriteTest, RangeScan_256B) {
   double time_taken_seconds = duration.count();  // Time in seconds
 
   // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
+  double throughput = 256 * total_operations / time_taken_seconds;
 
   // Log the throughput
   std::cout << "Basic 256B: Throughput: " << throughput << " operations per second." << std::endl;
@@ -231,7 +231,7 @@ TEST_P(DBWriteTest, RangeScan_1KB) {
   double time_taken_seconds = duration.count();  // Time in seconds
 
   // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
+  double throughput = 1024 * total_operations / time_taken_seconds;
 
   // Log the throughput
   std::cout << "Basic 1KB: Throughput: " << throughput << " operations per second." << std::endl;
@@ -291,7 +291,7 @@ TEST_P(DBWriteTest, RangeScan_4KB) {
   double time_taken_seconds = duration.count();  // Time in seconds
 
   // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
+  double throughput = 4096 * total_operations / time_taken_seconds;
 
   // Log the throughput
   std::cout << "Basic 4KB: Throughput: " << throughput << " operations per second." << std::endl;
@@ -351,7 +351,7 @@ TEST_P(DBWriteTest, RangeScan_16KB) {
   double time_taken_seconds = duration.count();  // Time in seconds
 
   // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
+  double throughput = 16384 * total_operations / time_taken_seconds;
 
   // Log the throughput
   std::cout << "Basic 16KB: Throughput: " << throughput << " operations per second." << std::endl;
@@ -410,7 +410,7 @@ TEST_P(DBWriteTest, RangeScan_64KB) {
   double time_taken_seconds = duration.count();  // Time in seconds
 
   // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
+  double throughput = 65536 * total_operations / time_taken_seconds;
 
   // Log the throughput
   std::cout << "Basic 64KB: Throughput: " << throughput << " operations per second." << std::endl;
@@ -470,7 +470,7 @@ TEST_P(DBWriteTest, RangeScan_256KB) {
   double time_taken_seconds = duration.count();  // Time in seconds
 
   // Calculate throughput: number of operations / time taken (in operations per second)
-  double throughput = total_operations / time_taken_seconds;
+  double throughput = 256 * 1024 * total_operations / time_taken_seconds;
 
   // Log the throughput
   std::cout << "Basic 256KB: Throughput: " << throughput << " operations per second." << std::endl;
@@ -609,7 +609,7 @@ TEST_P(DBWriteTest, RangeScanRandom_64B) {
   double throughput = 64 * total_operations / time_taken_seconds;
 
   // Log the throughput
-  std::cout << "Random: MultiThreaded 64B: Throughput: " << throughput << " operations per second." << std::endl;
+  std::cout << "Random: Basic 64B: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
@@ -684,7 +684,7 @@ TEST_P(DBWriteTest, RangeScanRandom_256B) {
   double throughput = 256 * total_operations / time_taken_seconds;
 
   // Log the throughput
-  std::cout << "Random: MultiThreaded 64B: Throughput: " << throughput << " operations per second." << std::endl;
+  std::cout << "Random: Basic 64B: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
@@ -759,7 +759,7 @@ TEST_P(DBWriteTest, RangeScanRandom_1KB) {
   double throughput = 1024 * total_operations / time_taken_seconds;
 
   // Log the throughput
-  std::cout << "Random: MultiThreaded 64B: Throughput: " << throughput << " operations per second." << std::endl;
+  std::cout << "Random: Basic 1KB: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
@@ -834,7 +834,7 @@ TEST_P(DBWriteTest, RangeScanRandom_4KB) {
   double throughput = 4 * 1024 * total_operations / time_taken_seconds;
 
   // Log the throughput
-  std::cout << "Random: MultiThreaded 64B: Throughput: " << throughput << " operations per second." << std::endl;
+  std::cout << "Random: Basic 4KB: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
@@ -909,7 +909,7 @@ TEST_P(DBWriteTest, RangeScanRandom_16KB) {
   double throughput = 16 * 1024 * total_operations / time_taken_seconds;
 
   // Log the throughput
-  std::cout << "Random: MultiThreaded 64B: Throughput: " << throughput << " operations per second." << std::endl;
+  std::cout << "Random: Basic 16KB: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
@@ -984,7 +984,7 @@ TEST_P(DBWriteTest, RangeScanRandom_64KB) {
   double throughput = 64 * 1024 * total_operations / time_taken_seconds;
 
   // Log the throughput
-  std::cout << "Random: MultiThreaded 64B: Throughput: " << throughput << " operations per second." << std::endl;
+  std::cout << "Random: Basic 64KB: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
@@ -1059,7 +1059,7 @@ TEST_P(DBWriteTest, RangeScanRandom_256KB) {
   double throughput = 256 * 1024 * total_operations / time_taken_seconds;
 
   // Log the throughput
-  std::cout << "Random: MultiThreaded 256KB: Throughput: " << throughput << " operations per second." << std::endl;
+  std::cout << "Random: Basic 256KB: Throughput: " << throughput << " operations per second." << std::endl;
 
   // Clean up
   w->CloseAndDestroy();
