@@ -1680,7 +1680,7 @@ Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
             return;
         }
 
-        size_t current = 0;
+        size_t current = start;
         while (it->Valid() && current < end) {
             if (current >= start) {
                 PinnableSlice pinnable_loc_value;
