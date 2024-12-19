@@ -2509,8 +2509,8 @@ class ModelDB : public DB {
 
   using DB::MultiGetExternalRangeQuery;
   Status MultiGetExternalRangeQuery(const ReadOptions& options,
-                             ColumnFamilyHandle* column_family,
-			     const Slice& s_key, const Slice& e_key,
+                             ColumnFamilyHandle* column_family, const int num_threads,
+			     const Slice& s_key, const size_t limit,
                              std::vector<PinnableSlice*>& values) {
       return Status::NotSupported("Not supported in ModelDB.");
   }

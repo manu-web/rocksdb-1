@@ -475,14 +475,14 @@ class DB {
   }
 
   virtual Status MultiGetExternalRangeQuery(const ReadOptions& options,
-                             ColumnFamilyHandle* column_family,
-			                       const Slice& s_key, const Slice& e_key,
+                             ColumnFamilyHandle* column_family, const int num_threads,
+			                       const Slice& s_key, const size_t limit,
                              std::vector<PinnableSlice*>& values) = 0;
 
-  virtual Status MultiGetExternalRangeQuery(const ReadOptions& options,
-			                       const Slice& s_key, const Slice& e_key,
+  virtual Status MultiGetExternalRangeQuery(const ReadOptions& options, const int num_threads,
+			                       const Slice& s_key, const size_t limit,
                              std::vector<PinnableSlice*>& values) {
-    return MultiGetExternalRangeQuery(options, DefaultColumnFamily(), s_key, e_key, values);
+    return MultiGetExternalRangeQuery(options, DefaultColumnFamily(), num_threads, s_key, limit, values);
   }
 
   // If keys[i] does not exist in the database, then the i'th returned
