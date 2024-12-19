@@ -80,8 +80,6 @@ TEST_P(DBWriteTest, RangeScan_64B) {
     batch.Put(key, base_value);
   }
 
-  // Measure the start time for the write operations
-  auto start_time = std::chrono::high_resolution_clock::now();
 
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
@@ -91,6 +89,9 @@ TEST_P(DBWriteTest, RangeScan_64B) {
   std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
 
     std::string start_key = "key1";  // Circular starting key
+          // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
     ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
 
     // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
@@ -427,8 +428,6 @@ TEST_P(DBWriteTest, RangeScan_256KB) {
     batch.Put(key, base_value);
   }
 
-  // Measure the start time for the write operations
-  auto start_time = std::chrono::high_resolution_clock::now();
 
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
@@ -438,6 +437,9 @@ TEST_P(DBWriteTest, RangeScan_256KB) {
   std::vector<std::pair<Slice, PinnableSlice*>> values(scan_operations);  // Each range scan will retrieve 5 keys
 
     std::string start_key = "key1";  // Circular starting key
+      // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
     ASSERT_OK(dbfull()->GetExternalRangeQueryPair(ReadOptions(), start_key, scan_operations, values));
 
     // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
@@ -484,8 +486,6 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_64B) {
     batch.Put(key, base_value);
   }
 
-  // Measure the start time for the write operations
-  auto start_time = std::chrono::high_resolution_clock::now();
 
   ASSERT_OK(dbfull()->Write(WriteOptions(), &batch, &offsets));
   ASSERT_EQ(offsets.size(), put_operations);  // Ensure that 5% Put operations were written
@@ -494,8 +494,12 @@ TEST_P(DBWriteTest, MultiThreadRangeScan_64B) {
   // Each range scan operation will scan exactly 5 keys
   std::vector<PinnableSlice*> values(scan_operations);  // Each range scan will retrieve 5 keys
 
+
     // Start from the first key and perform a range scan for 5 keys
     std::string start_key = "key1";  // Circular starting key
+      // Measure the start time for the write operations
+  auto start_time = std::chrono::high_resolution_clock::now();
+
     ASSERT_OK(dbfull()->MultiGetExternalRangeQuery(ReadOptions(), num_threads, start_key, scan_operations, values));
 
     // Verify that the values retrieved match the expected 64-byte value for each of the 5 keys
