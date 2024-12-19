@@ -26,6 +26,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 #include "db/builder.h"
 #include "db/compaction/compaction_job.h"
@@ -1631,7 +1633,7 @@ Status DBImpl::GetExternalRangeQueryPair(const ReadOptions& options,
         PinnableSlice* pinnable_value = new PinnableSlice();
 
         auto s = GetExternalImpl(pinnable_loc_value, pinnable_value);
-        printf("pinnable_value %s", pinnable_value->ToString().c_str());
+        //printf("pinnable_value %s \n", pinnable_value->ToString().c_str());
         values.push_back(std::make_pair(it->key(),pinnable_value));
         count++;
         //If the number of values fetched are more than asked by the requester
@@ -1645,30 +1647,33 @@ Status DBImpl::GetExternalRangeQueryPair(const ReadOptions& options,
 }
 
 Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
-                                     ColumnFamilyHandle* column_family, 
-                                     const Slice& s_key, const Slice& e_key,
+                                     ColumnFamilyHandle* column_family, const int num_threads,
+                                     const Slice& s_key, const size_t limit,
                                      std::vector<PinnableSlice*>& values) {
 
     values.clear();
 
     // Number of threads for parallel processing
-    const int num_threads = 2;  // You can adjust based on the system's CPU
+    const int total_threads = num_threads;  // You can adjust based on the system's CPU
     std::mutex values_mutex;     // Mutex to protect values vector
     std::vector<std::thread> threads;
-    std::vector<Status> statuses(num_threads);
+    std::vector<Status> statuses(total_threads);
 
     //TODO: Get range size from reading key string
-    auto range_size = 3;//static_cast<size_t>(e_key.compare(s_key));  // Calculate the range size
+    size_t range_size = limit;//static_cast<size_t>(e_key.compare(s_key));  // Calculate the range size
 
     // Lambda function for processing chunks in parallel
-    auto process_range_chunk = [&, num_threads](int thread_id) {
+    auto process_range_chunk = [&, total_threads](int thread_id) {
         // Determine the range of keys for this thread to process
-        size_t chunk_size = range_size / num_threads;
+        size_t chunk_size = range_size / total_threads;
         size_t start = thread_id * chunk_size;
-        size_t end = (thread_id == num_threads - 1) ? range_size : start + chunk_size;
-        printf("Thread %d processing range: [start = %zu, end = %zu]\n", thread_id, start, end);
+        size_t end = (thread_id == total_threads - 1) ? range_size : start + chunk_size;
+        //printf("Thread %d processing range: [start = %zu, end = %zu]\n", thread_id, start, end);
         std::unique_ptr<Iterator> it(NewIterator(options, column_family));
-        it->Seek(s_key);
+        std::ostringstream oss;
+        oss << "key" << std::setw(5) << std::setfill('0') << start;  // Padding to 6 digits
+        std::string start_key = oss.str();
+        it->Seek(start_key);
 
         if (!it->status().ok()) {
             statuses[thread_id] = it->status();
@@ -1683,7 +1688,7 @@ Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
                 PinnableSlice* pinnable_value = new PinnableSlice();
 
                 auto s = GetExternalImpl(pinnable_loc_value, pinnable_value);
-                printf("pinnable_value %s", pinnable_value->ToString().c_str());
+                //printf("pinnable_value %s", pinnable_value->ToString().c_str());
 
                 {
                     // Synchronize access to values vector
@@ -1694,6 +1699,7 @@ Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
                 }
             }
             current++;
+            //printf("ROCKSDB thread_id : it->key() %d : %s \n", thread_id, it->key().ToString().c_str());
             it->Next();
         }
 
@@ -1702,7 +1708,7 @@ Status DBImpl::MultiGetExternalRangeQuery(const ReadOptions& options,
 
 
      // Launch threads
-    for (int i = 0; i < num_threads; ++i) {
+    for (int i = 0; i < total_threads; ++i) {
         threads.push_back(std::thread(process_range_chunk, i));
     }
 
