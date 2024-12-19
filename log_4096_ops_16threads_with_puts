@@ -1,0 +1,580 @@
+[==========] Running 144 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 144 tests from DBWriteTestInstance/DBWriteTest
+[ RUN      ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/0
+/tmp/wotrlog.txt.stats
+[       OK ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/0 (21 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/1
+/tmp/wotrlog.txt.stats
+[       OK ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/1 (9 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/2
+/tmp/wotrlog.txt.stats
+[       OK ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/2 (8 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/3
+/tmp/wotrlog.txt.stats
+[       OK ] DBWriteTestInstance/DBWriteTest.InitAndRegisterWOTR/3 (9 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/0
+/tmp/wotrlog.txt.stats
+Basic 64B: Throughput: 4.21724 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/0 (73 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/1
+/tmp/wotrlog.txt.stats
+Basic 64B: Throughput: 4.6147 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/1 (56 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/2
+/tmp/wotrlog.txt.stats
+Basic 64B: Throughput: 4.59976 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/2 (56 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/3
+/tmp/wotrlog.txt.stats
+Basic 64B: Throughput: 4.50748 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64B/3 (57 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/0
+/tmp/wotrlog.txt.stats
+Basic 256B: Throughput: 17.7117 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/0 (80 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/1
+/tmp/wotrlog.txt.stats
+Basic 256B: Throughput: 17.6481 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/1 (71 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/2
+/tmp/wotrlog.txt.stats
+Basic 256B: Throughput: 17.6783 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/2 (70 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/3
+/tmp/wotrlog.txt.stats
+Basic 256B: Throughput: 17.5016 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256B/3 (72 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/0
+/tmp/wotrlog.txt.stats
+Basic 1KB: Throughput: 60.5799 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/0 (117 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/1
+/tmp/wotrlog.txt.stats
+Basic 1KB: Throughput: 58.0909 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/1 (128 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/2
+/tmp/wotrlog.txt.stats
+Basic 1KB: Throughput: 57.1063 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/2 (142 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/3
+/tmp/wotrlog.txt.stats
+Basic 1KB: Throughput: 56.838 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_1KB/3 (148 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/0
+/tmp/wotrlog.txt.stats
+Basic 4KB: Throughput: 173.221 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/0 (361 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/1
+/tmp/wotrlog.txt.stats
+Basic 4KB: Throughput: 178.413 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/1 (319 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/2
+/tmp/wotrlog.txt.stats
+Basic 4KB: Throughput: 179.437 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/2 (358 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/3
+/tmp/wotrlog.txt.stats
+Basic 4KB: Throughput: 176.476 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_4KB/3 (363 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/0
+/tmp/wotrlog.txt.stats
+Basic 16KB: Throughput: 158.557 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/0 (1053 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/1
+/tmp/wotrlog.txt.stats
+Basic 16KB: Throughput: 172.597 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/1 (1019 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/2
+/tmp/wotrlog.txt.stats
+Basic 16KB: Throughput: 172.681 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/2 (1021 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/3
+/tmp/wotrlog.txt.stats
+Basic 16KB: Throughput: 174.54 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_16KB/3 (1006 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/0
+/tmp/wotrlog.txt.stats
+Basic 64KB: Throughput: 160.425 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/0 (3727 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/1
+/tmp/wotrlog.txt.stats
+Basic 64KB: Throughput: 159.96 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/1 (3738 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/2
+/tmp/wotrlog.txt.stats
+Basic 64KB: Throughput: 160.61 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/2 (3717 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/3
+/tmp/wotrlog.txt.stats
+Basic 64KB: Throughput: 159.906 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_64KB/3 (3744 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/0
+/tmp/wotrlog.txt.stats
+Basic 256KB: Throughput: 165.911 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/0 (14489 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/1
+/tmp/wotrlog.txt.stats
+Basic 256KB: Throughput: 166.782 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/1 (14347 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/2
+/tmp/wotrlog.txt.stats
+Basic 256KB: Throughput: 166.869 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/2 (14586 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/3
+/tmp/wotrlog.txt.stats
+Basic 256KB: Throughput: 163.212 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_256KB/3 (14589 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/0
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 4.64685 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/0 (122 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/1
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 4.62871 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/1 (109 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/2
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 4.59677 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/2 (102 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/3
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 4.61997 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64B/3 (102 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/0
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 17.693 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/0 (126 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/1
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 17.953 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/1 (114 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/2
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 17.7155 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/2 (113 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/3
+/tmp/wotrlog.txt.stats
+Random: Basic 64B: Throughput: 17.9758 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256B/3 (112 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/0
+/tmp/wotrlog.txt.stats
+Random: Basic 1KB: Throughput: 63.2113 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/0 (175 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/1
+/tmp/wotrlog.txt.stats
+Random: Basic 1KB: Throughput: 55.3129 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/1 (177 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/2
+/tmp/wotrlog.txt.stats
+Random: Basic 1KB: Throughput: 54.9566 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/2 (176 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/3
+/tmp/wotrlog.txt.stats
+Random: Basic 1KB: Throughput: 54.6147 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_1KB/3 (178 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/0
+/tmp/wotrlog.txt.stats
+Random: Basic 4KB: Throughput: 166.518 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/0 (360 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/1
+/tmp/wotrlog.txt.stats
+Random: Basic 4KB: Throughput: 162.98 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/1 (350 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/2
+/tmp/wotrlog.txt.stats
+Random: Basic 4KB: Throughput: 164.097 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/2 (361 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/3
+/tmp/wotrlog.txt.stats
+Random: Basic 4KB: Throughput: 166.966 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_4KB/3 (363 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/0
+/tmp/wotrlog.txt.stats
+Random: Basic 16KB: Throughput: 166.265 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/0 (1059 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/1
+/tmp/wotrlog.txt.stats
+Random: Basic 16KB: Throughput: 161.737 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/1 (992 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/2
+/tmp/wotrlog.txt.stats
+Random: Basic 16KB: Throughput: 164.395 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/2 (1011 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/3
+/tmp/wotrlog.txt.stats
+Random: Basic 16KB: Throughput: 165.619 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_16KB/3 (983 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/0
+/tmp/wotrlog.txt.stats
+Random: Basic 64KB: Throughput: 159.931 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/0 (3906 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/1
+/tmp/wotrlog.txt.stats
+Random: Basic 64KB: Throughput: 158.967 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/1 (3789 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/2
+/tmp/wotrlog.txt.stats
+Random: Basic 64KB: Throughput: 160.407 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/2 (3785 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/3
+/tmp/wotrlog.txt.stats
+Random: Basic 64KB: Throughput: 160.391 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_64KB/3 (3789 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/0
+/tmp/wotrlog.txt.stats
+Random: Basic 256KB: Throughput: 166.15 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/0 (15303 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/1
+/tmp/wotrlog.txt.stats
+Random: Basic 256KB: Throughput: 165.101 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/1 (14658 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/2
+/tmp/wotrlog.txt.stats
+Random: Basic 256KB: Throughput: 164.931 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/2 (14685 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/3
+/tmp/wotrlog.txt.stats
+Random: Basic 256KB: Throughput: 165.05 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScanRandom_256KB/3 (14697 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/0
+/tmp/wotrlog.txt.stats
+MultiThreaded 64B: Throughput: 15.6568 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/0 (57 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/1
+/tmp/wotrlog.txt.stats
+MultiThreaded 64B: Throughput: 17.9575 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/1 (43 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/2
+/tmp/wotrlog.txt.stats
+MultiThreaded 64B: Throughput: 17.5037 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/2 (43 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/3
+/tmp/wotrlog.txt.stats
+MultiThreaded 64B: Throughput: 16.6865 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64B/3 (43 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/0
+/tmp/wotrlog.txt.stats
+MultiThreaded 256B: Throughput: 65.31 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/0 (59 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/1
+/tmp/wotrlog.txt.stats
+MultiThreaded 256B: Throughput: 66.4507 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/1 (51 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/2
+/tmp/wotrlog.txt.stats
+MultiThreaded 256B: Throughput: 59.6801 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/2 (51 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/3
+/tmp/wotrlog.txt.stats
+MultiThreaded 256B: Throughput: 66.3776 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256B/3 (50 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded 1KB: Throughput: 110.93 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/0 (95 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded 1KB: Throughput: 108.555 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/1 (99 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded 1KB: Throughput: 109.659 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/2 (88 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded 1KB: Throughput: 110.418 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_1KB/3 (89 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded 4KB: Throughput: 124.41 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/0 (257 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded 4KB: Throughput: 131.616 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/1 (257 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded 4KB: Throughput: 130.584 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/2 (254 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded 4KB: Throughput: 132.737 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_4KB/3 (253 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded 16KB: Throughput: 320.213 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/0 (596 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded 16KB: Throughput: 325.905 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/1 (594 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded 16KB: Throughput: 313.218 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/2 (580 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded 16KB: Throughput: 332.465 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_16KB/3 (593 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded 64KB: Throughput: 562.808 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/0 (2539 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded 64KB: Throughput: 598.777 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/1 (2538 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded 64KB: Throughput: 596.647 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/2 (2571 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded 64KB: Throughput: 601.63 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_64KB/3 (2546 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded 256KB: Throughput: 1008.67 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/0 (11647 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded 256KB: Throughput: 930.34 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/1 (11792 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded 256KB: Throughput: 1084.06 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/2 (11592 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded 256KB: Throughput: 1008.31 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_256KB/3 (11592 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/0
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64B: Throughput: 16.0623 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/0 (111 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/1
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64B: Throughput: 16.2575 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/1 (94 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/2
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64B: Throughput: 17.7976 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/2 (94 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/3
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64B: Throughput: 15.2469 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64B/3 (94 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/0
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256B: Throughput: 65.1679 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/0 (116 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/1
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256B: Throughput: 63.5869 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/1 (103 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/2
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256B: Throughput: 52.948 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/2 (103 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/3
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256B: Throughput: 55.1341 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256B/3 (103 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/0
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 1KB: Throughput: 104.533 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/0 (149 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/1
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 1KB: Throughput: 106.008 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/1 (153 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/2
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 1KB: Throughput: 111.287 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/2 (141 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/3
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 1KB: Throughput: 107.377 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_1KB/3 (141 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/0
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 4KB: Throughput: 122.602 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/0 (303 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/1
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 4KB: Throughput: 124.148 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/1 (306 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/2
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 4KB: Throughput: 121.171 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/2 (307 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/3
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 4KB: Throughput: 128.167 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_4KB/3 (310 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/0
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64KB: Throughput: 589.822 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/0 (3231 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/1
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64KB: Throughput: 574.564 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/1 (2994 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/2
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64KB: Throughput: 608.719 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/2 (3027 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/3
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 64KB: Throughput: 593.236 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_64KB/3 (3032 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/0
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256KB: Throughput: 915.023 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/0 (17436 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/1
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256KB: Throughput: 663.447 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/1 (18109 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/2
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256KB: Throughput: 899.044 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/2 (14351 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/3
+/tmp/wotrlog.txt.stats
+Random: MultiThreaded 256KB: Throughput: 951.156 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Random_256KB/3 (15164 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/0
+/tmp/wotrlog.txt.stats
+Basic Put 5% 64KB: Throughput: 278.976 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/0 (2850 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/1
+/tmp/wotrlog.txt.stats
+Basic Put 5% 64KB: Throughput: 273.825 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/1 (2963 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/2
+/tmp/wotrlog.txt.stats
+Basic Put 5% 64KB: Throughput: 276.948 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/2 (3141 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/3
+/tmp/wotrlog.txt.stats
+Basic Put 5% 64KB: Throughput: 278.102 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_5_64KB/3 (3276 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/0
+/tmp/wotrlog.txt.stats
+Basic Put 25% 64KB: Throughput: 253.917 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/0 (3552 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/1
+/tmp/wotrlog.txt.stats
+Basic Put 25% 64KB: Throughput: 157.494 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/1 (3910 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/2
+/tmp/wotrlog.txt.stats
+Basic Put 25% 64KB: Throughput: 158.081 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/2 (3814 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/3
+/tmp/wotrlog.txt.stats
+Basic Put 25% 64KB: Throughput: 159.778 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_25_64KB/3 (3819 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/0
+/tmp/wotrlog.txt.stats
+Basic Put 50% 64KB: Throughput: 151.272 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/0 (3839 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/1
+/tmp/wotrlog.txt.stats
+Basic Put 50% 64KB: Throughput: 153.625 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/1 (3813 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/2
+/tmp/wotrlog.txt.stats
+Basic Put 50% 64KB: Throughput: 150.877 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/2 (3865 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/3
+/tmp/wotrlog.txt.stats
+Basic Put 50% 64KB: Throughput: 150.444 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_50_64KB/3 (3918 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/0
+/tmp/wotrlog.txt.stats
+Basic Put 75% 64KB: Throughput: 142.601 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/0 (3842 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/1
+/tmp/wotrlog.txt.stats
+Basic Put 75% 64KB: Throughput: 141.571 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/1 (3833 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/2
+/tmp/wotrlog.txt.stats
+Basic Put 75% 64KB: Throughput: 141.529 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/2 (3957 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/3
+/tmp/wotrlog.txt.stats
+Basic Put 75% 64KB: Throughput: 141.739 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.RangeScan_Put_75_64KB/3 (3792 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 5 64KB: Throughput: 524.851 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/0 (3521 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 5 64KB: Throughput: 550.211 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/1 (3554 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 5 64KB: Throughput: 534.76 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/2 (3516 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 5 64KB: Throughput: 556.046 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_5_64KB/3 (3504 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 25 64KB: Throughput: 522.738 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/0 (3545 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 25 64KB: Throughput: 496.11 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/1 (3571 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 25 64KB: Throughput: 514.507 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/2 (3542 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 25 64KB: Throughput: 500.597 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_25_64KB/3 (3607 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 50 64KB: Throughput: 416.64 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/0 (3608 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 50 64KB: Throughput: 387.363 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/1 (3671 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 50 64KB: Throughput: 428.434 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/2 (3562 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 50 64KB: Throughput: 421.686 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_50_64KB/3 (3610 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/0
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 75 64KB: Throughput: 343.425 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/0 (3733 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/1
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 75 64KB: Throughput: 340.067 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/1 (3893 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/2
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 75 64KB: Throughput: 343.858 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/2 (3827 ms)
+[ RUN      ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/3
+/tmp/wotrlog.txt.stats
+MultiThreaded Put 75 64KB: Throughput: 340.034 MBps
+[       OK ] DBWriteTestInstance/DBWriteTest.MultiThreadRangeScan_Put_75_64KB/3 (3714 ms)
+[----------] 144 tests from DBWriteTestInstance/DBWriteTest (418358 ms total)
+
+[----------] Global test environment tear-down
+[==========] 144 tests from 1 test case ran. (418359 ms total)
+[  PASSED  ] 144 tests.
